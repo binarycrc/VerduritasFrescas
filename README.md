@@ -36,8 +36,11 @@ En el caso que no hay descuento
 4. Al final habrá un botón que diga enviar pedido y que indique al usuario que el pedido por el monto (monto de la factura) ha sido enviado.
 
 El estudiante debe grabar video de todas las acciones que considere necesarias para explicar los puntos que se le solicitan, debe contener explicaciones de partes del código fuente. Que por el conocimiento del estudiante son primordiales para el funcionamiento del instrumento.
-El estudiante debe presentar el instrumento con todo el código fuente. El video debe ser presentado dentro de una carpeta en el escritorio del servidor virtual que se le asignó. La carpeta debe tener como nombre: Resolución Problema
+
+El estudiante debe presentar el instrumento con todo el código fuente. El video debe ser presentado dentro de una carpeta en el escritorio del servidor virtual que se le asignó. La carpeta debe tener como nombre: **Resolución Problema**
+
 Cualquier diferencia con el nombre de la carpeta o el lugar en donde esté. Automáticamente la nota que obtendrá en el instrumento es de 20.
+
 Recuerde que en el servidor virtual se guardan todas las acciones que realice, por lo que es requerido que entregue cada instrumento en el tiempo que se ha establecido para hacerlo. No se calificará ningún instrumento que no sea presentado en el servidor virtual, sin excepciones.
 
 | Aspecto a Evaluar | Valor |
