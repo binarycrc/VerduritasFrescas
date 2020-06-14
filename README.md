@@ -41,9 +41,10 @@ Cualquier diferencia con el nombre de la carpeta o el lugar en donde esté. Auto
 Recuerde que en el servidor virtual se guardan todas las acciones que realice, por lo que es requerido que entregue cada instrumento en el tiempo que se ha establecido para hacerlo. No se calificará ningún instrumento que no sea presentado en el servidor virtual, sin excepciones.
 
 | Aspecto a Evaluar | Valor |
-| Se valida la identificación del usuario de forma correcta | 10 | 
-| Se despliega la lista de productos de forma correcta y se hacen las validaciones que se solicitan | 25 | 
-| Despliega el resumen de la compra, aplica formatos correctos para el descuento | 30 | 
-| Cuando se le da al botón de enviar pedido sale el mensaje final solicitado que indica el monto | 5 | 
-| Presenta el video explicativo y ahonda en la parte de código más importante. Se demuestra con este video el conocimiento del estudiante del instrumento que presentó. | 30 | 
-| Total | 100 | 
+| --- | --- |
+| Se valida la identificación del usuario de forma correcta | 10 |
+| Se despliega la lista de productos de forma correcta y se hacen las validaciones que se solicitan | 25 |
+| Despliega el resumen de la compra, aplica formatos correctos para el descuento | 30 |
+| Cuando se le da al botón de enviar pedido sale el mensaje final solicitado que indica el monto | 5 |
+| Presenta el video explicativo y ahonda en la parte de código más importante. Se demuestra con este video el conocimiento del estudiante del instrumento que presentó. | 30 |
+| Total | 100 |
