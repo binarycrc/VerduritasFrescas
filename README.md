@@ -1,10 +1,10 @@
-#Cátedra de Ingeniería de Software
-##Código Asignatura: 03075
-##Asignatura: Fundamentos de Programación Web
-##Cuatrimestre: II Cuatrimestre 2020
-##Proyectos y Tarea
+# Cátedra de Ingeniería de Software
+## Código Asignatura: 03075
+## Asignatura: Fundamentos de Programación Web
+## Cuatrimestre: II Cuatrimestre 2020
+## Proyectos y Tarea
 
-###Resolución de problema
+### Resolución de problema
 Utilice la herramienta notepad para crear una página html que use Javascript, css y HTML5. Si utiliza otra tecnología cómo páginas JSP, bootstrap el proyecto se calificará con una nota máxima de 20 puntos sobre 100.
 
 Debe cumplir los siguientes requerimientos:
@@ -22,7 +22,7 @@ deberá tener al menos 10 productos ingresados, recuerde que la página vende ve
 | 2 | Chayote | 10 | 20 | 19 | 21,47 | 
 | 1 | Piña | 15 | 15 | 14,25 | 16,102 | 
 | 1 | tomate | 20 | 20 | 19 | 21,47 | 
-Total 69,78
+| Total |  |  |  | | 69,78 |
 
 En el caso que no hay descuento
 Cantidad Descripción Precio Subtotal Descuento al con 13 IVA
