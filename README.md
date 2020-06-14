@@ -1,4 +1,4 @@
-# Cátedra de Ingeniería de Software
+## Cátedra de Ingeniería de Software
 ## Código Asignatura: 03075
 ## Asignatura: Fundamentos de Programación Web
 ## Cuatrimestre: II Cuatrimestre 2020
@@ -25,41 +25,25 @@ deberá tener al menos 10 productos ingresados, recuerde que la página vende ve
 | Total |  |  |  | | 69,78 |
 
 En el caso que no hay descuento
-Cantidad Descripción Precio Subtotal Descuento al con 13 IVA
-1 Banano 5 5 0 5,65
-1 Chayote 10 10 0 11,3
-1 Piña 15 15 0 16,95
-1 tomate 20 20 0 22,6
-Total 56,5
-4. Al final habrá un botón que diga enviar pedido y que indique al usuario que el pedido por el
-monto (monto de la factura) ha sido enviado.
-El estudiante debe grabar video de todas las acciones que considere necesarias para explicar los puntos
-que se le solicitan, debe contener explicaciones de partes del código fuente. Que por el conocimiento
-del estudiante son primordiales para el funcionamiento del instrumento.
-El estudiante debe presentar el instrumento con todo el código fuente. El video debe ser presentado
-dentro de una carpeta en el escritorio del servidor virtual que se le asignó. La carpeta debe tener como
-nombre: Resolución Problema
-Cualquier diferencia con el nombre de la carpeta o el lugar en donde esté. Automáticamente la nota que
-obtendrá en el instrumento es de 20.
-Recuerde que en el servidor virtual se guardan todas las acciones que realice, por lo que es requerido
-que entregue cada instrumento en el tiempo que se ha establecido para hacerlo. No se calificará ningún
-instrumento que no sea presentado en el servidor virtual, sin excepciones.
-Aspecto a Evaluar Valor
-Se valida la identificación del usuario de forma
-correcta
-10
-Se despliega la lista de productos de forma correcta y
-se hacen las validaciones que se solicitan
-25
-Despliega el resumen de la compra, aplica formatos
-correctos para el descuento
-30
-Cuando se le da al botón de enviar pedido sale el
-mensaje final solicitado que indica el monto
-5
-Presenta el video explicativo y ahonda en la parte de
-código más importante. Se demuestra con este video
-el conocimiento del estudiante del instrumento que
-presentó.
-30
-Total 100
+| Cantidad | Descripción | Precio | Subtotal | Descuento al con | 13 IVA | 
+| --- | --- | --- | --- | --- | --- | 
+| 1 | Banano | 5 | 5 | 0 | 5,65 | 
+| 1 | Chayote | 10 | 10 | 0 | 11,3 | 
+| 1 | Piña | 15 | 15 | 0 | 16,95 | 
+| 1 | tomate | 20 | 20 | 0 | 22,6 | 
+| Total  |  |  |  | | 56,5 |
+
+4. Al final habrá un botón que diga enviar pedido y que indique al usuario que el pedido por el monto (monto de la factura) ha sido enviado.
+
+El estudiante debe grabar video de todas las acciones que considere necesarias para explicar los puntos que se le solicitan, debe contener explicaciones de partes del código fuente. Que por el conocimiento del estudiante son primordiales para el funcionamiento del instrumento.
+El estudiante debe presentar el instrumento con todo el código fuente. El video debe ser presentado dentro de una carpeta en el escritorio del servidor virtual que se le asignó. La carpeta debe tener como nombre: Resolución Problema
+Cualquier diferencia con el nombre de la carpeta o el lugar en donde esté. Automáticamente la nota que obtendrá en el instrumento es de 20.
+Recuerde que en el servidor virtual se guardan todas las acciones que realice, por lo que es requerido que entregue cada instrumento en el tiempo que se ha establecido para hacerlo. No se calificará ningún instrumento que no sea presentado en el servidor virtual, sin excepciones.
+
+| Aspecto a Evaluar | Valor |
+| Se valida la identificación del usuario de forma correcta | 10 | 
+| Se despliega la lista de productos de forma correcta y se hacen las validaciones que se solicitan | 25 | 
+| Despliega el resumen de la compra, aplica formatos correctos para el descuento | 30 | 
+| Cuando se le da al botón de enviar pedido sale el mensaje final solicitado que indica el monto | 5 | 
+| Presenta el video explicativo y ahonda en la parte de código más importante. Se demuestra con este video el conocimiento del estudiante del instrumento que presentó. | 30 | 
+| Total | 100 | 
