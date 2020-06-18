@@ -9,6 +9,11 @@ Pablo Ugalde
 
 https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/text
 https://webdesign.tutsplus.com/tutorials/html5-form-validation-with-the-pattern-attribute--cms-25145
+https://www.aspsnippets.com/Articles/Convert-JSON-data-to-HTML-Table-using-JavaScript.aspx
+https://flaviocopes.com/how-to-add-event-listener-multiple-elements-javascript/
+
+oninvalid="identificacionInvalido(this)"
+                    oninput="identificacionInvalido(this)" 
 -->
 <!DOCTYPE html>
 <html lang="en">
@@ -23,30 +28,29 @@ https://webdesign.tutsplus.com/tutorials/html5-form-validation-with-the-pattern-
 </head>
 
 <body>
-    <form>
-        <div class="verduritasInputGroup">
-            <div>
-                <label for="tipoIdentificacion">Tipo de Identificación</label>
-                <select name="tipoIdentificacion">
-                    <option value="fisica" selected>Física</option>
-                    <option value="juridica">Jurídica</option>
-                </select>
-            </div>
-            <div>
-                <label for="identificacion">Identificación:</label>
-                <input id="identificacion" type="text" name="identificacion" placeholder="ex. 10234506789"
-                    pattern="[1-9]0?\d{4}0?\d{4}"
-                    oninvalid="identificacionInvalido(this)"
-                    oninput="identificacionInvalido(this)" 
-                    required>
-                <span class="validity"></span>
-            </div>
-        </div>
-
+    <div class="verduritasInputGroup">
         <div>
-            <input type="submit" value="Ingresar">
+            <label for="tipoIdentificacion">Tipo de Identificación</label>
+            <select name="tipoIdentificacion">
+                <option value="fisica" selected>Física</option>
+                <option value="juridica">Jurídica</option>
+            </select>
         </div>
-    </form>
+        <div>
+            <label for="identificacion">Identificación:</label>
+            <input id="identificacion" type="text" name="identificacion" placeholder="ex. 102340567"
+                pattern="[1-9]\d{8}"
+                required>
+            <span class="validity"></span>
+        </div>
+    </div>
+    <div>
+        <input type="submit" value="Ingresar">
+    </div>
+<div id="divTable">
+    
+</div>
+
 </body>
 <script src="scripts.js"></script>
 

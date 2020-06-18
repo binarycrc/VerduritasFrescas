@@ -24,3 +24,7 @@ input:valid+span:after {
 input,input:valid {
     color: #000000;
 }
+
+#cantidad {
+    width: 3em;
+  }
