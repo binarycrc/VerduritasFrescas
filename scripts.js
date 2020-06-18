@@ -1,25 +1,39 @@
-cargaVerduras();
+let form = document.getElementById('form');
 let identificacion = document.getElementById('identificacion');
+let divTable = document.getElementById('divTable');
+
 let sumCantidades = 0;
 let porcDescuento = 5/100;
 let porcIva = 13/100;
+let sumTotalSubTotal=0;
+let sumTotalDescuento=0;
+let sumTotalIva=0;
 
-identificacion.oninvalid=function(event) {
-    event.target.setCustomValidity('Identificación de persona física invalida');
+identificacion.oninvalid= invalidIdentificacion;
+form.onsubmit = submit;
+cargaVerduras();
+function submit(event) {
+    form.setAttribute('hidden', '');
+    divTable.removeAttribute('hidden');
+    
+    event.preventDefault();
+  }
+
+function invalidIdentificacion(event) {
+    event.target.setCustomValidity('');
     if (event.target.value === '') {
-        event.target.setCustomValidity('Identificación de persona física invalida');
-    } else if (event.target.validity.typeMismatch){
         event.target.setCustomValidity('Identificación de persona física invalida');
     } else if (event.target.validity.patternMismatch){
         event.target.setCustomValidity('Formato de Identificación de persona física invalida');
     }
     else {
         event.target.setCustomValidity('');
-    }    
+    } 
 }
 
-document.querySelectorAll('[id^="cantidad"]').forEach(item => {
+document.querySelectorAll('[id^="cantidad_"]').forEach(item => {
     item.addEventListener('input', event => {
+        console.log(event);
         sumaCantidades();
         let idverdura = item.id.split("_");
         let idprecio = '[id="precio_'+idverdura[1]+'"]';
@@ -27,13 +41,12 @@ document.querySelectorAll('[id^="cantidad"]').forEach(item => {
         
         let idiva = '[id="iva_'+idverdura[1]+'"]';
         let calculaSubtotal = 0;
-        let calculaDescuento = 0;
-        let calculaIva = 0;
 
         calculaSubtotal = parseInt(event.target.value)*parseInt(document.querySelector(idprecio).innerText);
         document.querySelector(idsubtotal).innerText=calculaSubtotal;
-
+       
         calDescuentos();
+        sumaTotales();
     })
 })
 
@@ -43,6 +56,26 @@ function sumaCantidades() {
         sumCantidades+=parseInt(item.value);
     })
 }
+
+function sumaTotales() {
+    sumTotalSubTotal=0;
+    sumTotalDescuento=0;
+    sumTotalIva=0;
+    document.querySelectorAll('[id^="subtotal"]').forEach(item => {
+        sumTotalSubTotal+=parseFloat(item.innerText).toFixed(2);
+    })
+    document.querySelectorAll('[id^="descuento"]').forEach(item => {
+        sumTotalDescuento+=parseFloat(item.innerText).toFixed(2);
+    })
+    document.querySelectorAll('[id^="iva"]').forEach(item => {
+        sumTotalIva+=parseFloat(item.innerText).toFixed(2);
+    })
+    document.querySelector("[id='TotalSubTotal']").innerText=sumTotalSubTotal;
+    document.querySelector("[id='TotalDescuento']").innerText=sumTotalDescuento;
+    document.querySelector("[id='TotalIva']").innerText=sumTotalIva;
+    console.log(sumTotalIva);
+}
+
 function calDescuentos() {
     document.querySelectorAll('[id^="descuento"]').forEach(item => {
         let idverdura = item.id.split("_");
@@ -63,9 +96,6 @@ function calDescuentos() {
         document.querySelector(idiva).innerText=calculaIva;
     })
 }
-
-
-
 
 function cargaVerduras() {
     let verdurasData = new Array();
@@ -143,7 +173,39 @@ function cargaVerduras() {
     }
 
     let divTable = document.getElementById("divTable");
-    
+    //Add the footer row.
+    let footerrow = table.insertRow(-1);
+    for (let i = 0; i < columnCount; i++) {
+        let headerCell = document.createElement("TH");
+        if(i<6){
+            headerCell.innerHTML = "";
+            footerrow.appendChild(headerCell);    
+        }else if(i==6){
+            headerCell.innerHTML = "TOTALES:";
+            footerrow.appendChild(headerCell);
+        }else if(i==7){
+            let labelTotalSubTotal = document.createElement("label");
+            labelTotalSubTotal.name = "TotalSubTotal";
+            labelTotalSubTotal.id = "TotalSubTotal";
+            labelTotalSubTotal.innerText = 0;
+            headerCell.appendChild(labelTotalSubTotal);
+            footerrow.appendChild(headerCell);
+        }else if(i==8){
+            let labelTotalDescuento = document.createElement("label");
+            labelTotalDescuento.name = "TotalDescuento";
+            labelTotalDescuento.id = "TotalDescuento";
+            labelTotalDescuento.innerText = 0;
+            headerCell.appendChild(labelTotalDescuento);
+            footerrow.appendChild(headerCell);
+        }else if(i==9){
+            let labelTotalIva = document.createElement("label");
+            labelTotalIva.name = "TotalIva";
+            labelTotalIva.id = "TotalIva";
+            labelTotalIva.innerText = 0;
+            headerCell.appendChild(labelTotalIva);
+            footerrow.appendChild(headerCell);
+        }
+    }
 
     divTable.innerHTML = "";
     divTable.appendChild(table);

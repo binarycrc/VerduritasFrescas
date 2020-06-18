@@ -28,6 +28,7 @@ oninvalid="identificacionInvalido(this)"
 </head>
 
 <body>
+    <form id="form">
     <div class="verduritasInputGroup">
         <div>
             <label for="tipoIdentificacion">Tipo de Identificación</label>
@@ -43,11 +44,13 @@ oninvalid="identificacionInvalido(this)"
                 required>
             <span class="validity"></span>
         </div>
+        <div>
+            <input type="submit" value="Ingresar">
+        </div>
     </div>
-    <div>
-        <input type="submit" value="Ingresar">
-    </div>
-<div id="divTable">
+    
+</form>
+<div id="divTable" hidden>
     
 </div>
 
