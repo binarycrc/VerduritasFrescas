@@ -34,3 +34,6 @@ input,input:valid {
 .cellIzq{text-align: left;}
 .cellCen{text-align: center;}
 .cellDer{text-align: right;}
+
+.descuentoGreen{background-color: green;}
+.ivaBlue{background-color: lightskyblue;}
