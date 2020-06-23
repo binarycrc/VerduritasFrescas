@@ -3,6 +3,7 @@ const identificacion = document.getElementById('identificacion');
 const tipoIdentificacion = document.getElementById('tipoIdentificacion');
 const labelPatron = document.getElementById('labelPatron');
 const divTable = document.getElementById('divTable');
+const divCliente = document.getElementById('divCliente');
 
 let sumCantidades = 0;
 let porcDescuento = 5/100;
@@ -11,31 +12,37 @@ let sumTotalVerduras=0;
 let sumTotalSubTotal=0;
 let sumTotalDescuento=0;
 let sumTotalIva=0;
-let patronIdentificacion= /[1-9]\d{8}/; //fisica nacional
+let patronIdentificacion= /[1-9]\d{8}$/; //fisica nacional
 
 identificacion.oninput = validaIdentificacion;
 form.onsubmit = submit;
-
+tipoIdentificacion.onchange = cambiaPatron();
 cargaVerduras();
 
 function submit(event) {
     cambiaPatron();
-    if((tipoIdentificacion.value==="fisica") && (patronIdentificacion.test(identificacion.value))){
+    if((tipoIdentificacion.value==="fisica") && (patronIdentificacion.test(identificacion.value)) ){
         form.setAttribute('hidden', '');
-        divTable.removeAttribute('hidden');    
-    }else if((tipoIdentificacion.value==="juridica") && (patronIdentificacion.test(identificacion.value))){
+        divTable.removeAttribute('hidden');
+        divCliente.removeAttribute('hidden');
+        lableIdentificacion.innerText=identificacion.value;
+    }else if((tipoIdentificacion.value==="juridica") && (patronIdentificacion.test(identificacion.value)) ){
         form.setAttribute('hidden', '');
-        divTable.removeAttribute('hidden');    
-    }else if((tipoIdentificacion.value==="dimex") && (patronIdentificacion.test(identificacion.value))){
+        divTable.removeAttribute('hidden');  
+        divCliente.removeAttribute('hidden');  
+        lableIdentificacion.innerText=identificacion.value;
+    }else if((tipoIdentificacion.value==="dimex") && (patronIdentificacion.test(identificacion.value)) ){
         form.setAttribute('hidden', '');
-        divTable.removeAttribute('hidden');    
+        divTable.removeAttribute('hidden');
+        divCliente.removeAttribute('hidden');
+        lableIdentificacion.innerText=identificacion.value;
     }else{alert("Tipo de identificación y formato de identificación no corresponden.");}
     event.preventDefault();
 }
 
 function validaIdentificacion(event) {
+    cambiaPatron();
     event.target.setCustomValidity('');
-    console.log(event.target.validity);
     if (event.target.value === '') {
         event.target.setCustomValidity('Identificación invalida');
     } else if (!(patronIdentificacion.test(event.target.value))){
@@ -46,21 +53,21 @@ function validaIdentificacion(event) {
     } 
 }
 
-tipoIdentificacion.addEventListener('change', cambiaPatron());
 
 function cambiaPatron() {
+    //console.log("tipoIdentificacion.value "+ tipoIdentificacion.value)
     switch (tipoIdentificacion.value) {
         case "fisica":
             labelPatron.innerText="ex. 102340567  debe de contener 9 dígitos, sin cero al inicio y sin guiones ";
-            patronIdentificacion= /[1-9]\d{8}/; //fisica nacional
+            patronIdentificacion= /^(?:[1-9]\d{8}|0)$/gm; //fisica nacional
             break;
         case "juridica":
             labelPatron.innerText="ex. 3045607891  debe contener 10 dígitos y sin guiones";
-            patronIdentificacion= /[1-9]\d{9}/; //juridica nacional
+            patronIdentificacion= /^(?:[1-9]\d{9}|0)$/gm; //juridica nacional
             break;
         case "dimex":
             labelPatron.innerText="ex. 155663045607 debe contener 12 dígitos, sin ceros al inicio y sin guiones";
-            patronIdentificacion= /[1-9]\d{11}/; //juridica nacional
+            patronIdentificacion= /^(?:[1-9]\d{11}|0)$/gm; //juridica nacional
             break;
         default:
             break;
@@ -69,13 +76,24 @@ function cambiaPatron() {
 
 document.querySelectorAll('[id^="cantidad_"]').forEach(item => {
     item.addEventListener('input', event => {
-        console.log(event);
+console.log('antes de');
+        console.log(event.target.max);
+        console.log(event.target.value);
+        event.target.value = event.target.value.length==0 ? 0 : parseInt(event.target.value);
+        event.target.value = isNaN(event.target.value) ? 0 : parseInt(event.target.value);
+        if(parseInt(event.target.value) > parseInt(event.target.max)){
+            console.log('despues de');
+            console.log(event.target.max);
+            console.log(event.target.value);
+    
+            event.target.value=event.target.max;
+        }
+        else{}
         sumaCantidades();
         let idverdura = item.id.split("_");
         let idprecio = '[id="precio_'+idverdura[1]+'"]';
         let idsubtotal = '[id="subtotal_'+idverdura[1]+'"]';
-        
-        let idiva = '[id="iva_'+idverdura[1]+'"]';
+       
         let calculaSubtotal = 0;
 
         calculaSubtotal = parseInt(event.target.value)*parseInt(document.querySelector(idprecio).innerText);
@@ -111,7 +129,6 @@ function sumaTotales() {
     document.querySelector("[id='TotalSubTotal']").innerText=sumTotalSubTotal.toFixed(2);
     document.querySelector("[id='TotalDescuento']").innerText=sumTotalDescuento.toFixed(2);
     document.querySelector("[id='TotalIva']").innerText=sumTotalIva.toFixed(2);
-    console.log(sumTotalIva);
 }
 
 function calDescuentos() {
@@ -181,6 +198,9 @@ function cargaVerduras() {
                 labelPrecio.innerText = verdurasData[i][j];
                 cell.className="cellDer";
                 cell.appendChild(labelPrecio);
+            }else if (j==4){
+                cell.className="cellDer";
+                cell.innerHTML = verdurasData[i][j];
             }else if (j==6){
                 let inputCantidad = document.createElement("input");
                 inputCantidad.name = "cantidad";
