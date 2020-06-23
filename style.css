@@ -28,3 +28,9 @@ input,input:valid {
 #cantidad {
     width: 3em;
   }
+.imgverdura{
+    max-width: 50px;
+}
+.cellIzq{text-align: left;}
+.cellCen{text-align: center;}
+.cellDer{text-align: right;}
