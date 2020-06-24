@@ -16,5 +16,5 @@ input,input:valid {color: #000000;}
 .cellCen{text-align: center;}
 .cellDer{text-align: right;}
 
-.descuentoGreen{background-color: green;}
-.ivaBlue{background-color: lightskyblue;}
+td.descuentoGreen{background-color: green;text-align: right;}
+td.ivaBlue{background-color: lightskyblue;text-align: right;}

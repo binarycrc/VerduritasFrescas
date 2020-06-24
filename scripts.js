@@ -176,18 +176,18 @@ function calDescuentos() {
         document.querySelector(idiva).innerText=calculaIva.toFixed(2);
 
         if((calculaDescuento>0) && (calculaSubtotal>0)){
-            document.querySelector(idsubtotal).className="descuentoGreen";
-            document.querySelector(iddescuento).className="descuentoGreen";
-            document.querySelector(idiva).className="descuentoGreen";
+            document.querySelector(idsubtotal).parentElement.className="descuentoGreen";
+            document.querySelector(iddescuento).parentElement.className="descuentoGreen";
+            document.querySelector(idiva).parentElement.className="descuentoGreen";
         }
         else if((calculaDescuento==0) && (calculaSubtotal>0)){
-            document.querySelector(idsubtotal).className="ivaBlue";
-            document.querySelector(iddescuento).className="ivaBlue";
-            document.querySelector(idiva).className="ivaBlue";
+            document.querySelector(idsubtotal).parentElement.className="ivaBlue";
+            document.querySelector(iddescuento).parentElement.className="ivaBlue";
+            document.querySelector(idiva).parentElement.className="ivaBlue";
         }else{
-            document.querySelector(idsubtotal).className="";
-            document.querySelector(iddescuento).className="";
-            document.querySelector(idiva).className="";
+            document.querySelector(idsubtotal).parentElement.className="cellDer";
+            document.querySelector(iddescuento).parentElement.className="cellDer";
+            document.querySelector(idiva).parentElement.className="cellDer";
         }
         
              
