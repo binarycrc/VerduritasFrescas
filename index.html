@@ -23,43 +23,53 @@ oninvalid="identificacionInvalido(this)"
     <title>Verduritas Frescas</title>
     <meta name="description"
         content="Fundamentos de Programación Web - Resolución de problema -  Verduritas Frescas S.A. ">
+    <meta name="keywords" content="HTML5, CSS3, JavaScript">
     <meta name="author" content="Pablo Ugalde">
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <form id="form">
-    <div class="verduritasInputGroup">
-        <div>
-            <label for="tipoIdentificacion">Tipo de Identificación</label>
-            <select name="tipoIdentificacion" id="tipoIdentificacion">
-                <option value="fisica" selected>Física</option>
-                <option value="juridica">Jurídica</option>
-                <option value="dimex">DIMEX</option>
-            </select>
-        </div>
-        <div>
-            <label for="identificacion">Identificación:</label>
-            <input id="identificacion" type="text" name="identificacion" required>
-            <span class="validity"></span>
-            <span id="labelPatron">ex. 102340567</span>
-        </div>
-        <div>
-            <input type="submit" value="Ingresar">
-        </div>
+    <div>
+        <header></header>
+        <nav></nav>
+        <section>
+            <form id="form">
+                <div class="verduritasInputGroup">
+                    <div>
+                        <label for="tipoIdentificacion">Tipo de Identificación</label>
+                        <select name="tipoIdentificacion" id="tipoIdentificacion">
+                            <option value="fisica" selected>Física</option>
+                            <option value="juridica">Jurídica</option>
+                            <option value="dimex">DIMEX</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="identificacion">Identificación:</label>
+                        <input id="identificacion" type="text" name="identificacion" required>
+                        <span class="validity"></span>
+                        <span id="labelPatron">ex. 102340567</span>
+                    </div>
+                    <div>
+                        <input type="submit" value="Ingresar">
+                    </div>
+                </div>
+
+            </form>
+            <div id="divCliente" hidden>
+                <label>Cliente: </label>
+                <label id="lableIdentificacion"></label>
+                <input type="button" id="enviarPedido" value="Enviar Pedido">
+            </div>
+
+            <div id="divTable" hidden>
+
+            </div>
+
+        </section>
+        <footer>
+            Derechos Reservados &copy; 2020
+        </footer>
     </div>
-    
-</form>
-<div id="divCliente" hidden>
-    <label>Cliente: </label>
-    <label id="lableIdentificacion"></label>
-    <input type="button" id="enviarPedido" value="Enviar Pedido">
-</div>
-
-<div id="divTable" hidden>
-    
-</div>
-
 </body>
 <script src="scripts.js"></script>
 
