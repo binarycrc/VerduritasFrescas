@@ -1,35 +1,51 @@
-const form = document.getElementById('form');
-const identificacion = document.getElementById('identificacion');
-const tipoIdentificacion = document.getElementById('tipoIdentificacion');
-const labelPatron = document.getElementById('labelPatron');
-const divTable = document.getElementById('divTable');
-const divCliente = document.getElementById('divCliente');
-const enviarPedido = document.getElementById('enviarPedido');
+const form = document.querySelector('#form');
+const identificacion = document.querySelector('#identificacion');
+const tipoIdentificacion = document.querySelector('#tipoIdentificacion');
+const labelPatron = document.querySelector('#labelPatron');
+const divTable = document.querySelector('#divTable');
+const divCliente = document.querySelector('#divCliente');
+const enviarPedido = document.querySelector('#enviarPedido');
+const modal = document.querySelector("#myModal");
+const spanClose = document.querySelector("#spanClose");
+const modalMsg = document.querySelector("#modalMsg");
+const porcDescuento = 5/100;
+const porcIva = 13/100;
+
 
 let sumCantidades = 0;
-let porcDescuento = 5/100;
-let porcIva = 13/100;
 let sumTotalVerduras=0;
 let sumTotalSubTotal=0;
 let sumTotalDescuento=0;
 let sumTotalIva=0;
 let patronIdentificacion= /[1-9]\d{8}$/; //fisica nacional
 
-form.onsubmit = submit;
-tipoIdentificacion.onchange = cambiaPatron;
-identificacion.oninput = validaIdentificacion;
-enviarPedido.onclick=enviaPedido;
+// form.onsubmit = submit;
+// tipoIdentificacion.onchange = cambiaPatron;
+// identificacion.oninput = validaIdentificacion;
+// enviarPedido.onclick=enviaPedido;
 
+form.addEventListener("submit", submit, false);
+tipoIdentificacion.addEventListener("change", cambiaPatron, false);
+identificacion.addEventListener("input", validaIdentificacion, false);
+enviarPedido.addEventListener("click", enviaPedido, false);
+spanClose.addEventListener("click", closeModal, false);
+//window.addEventListener("load", cargaVerduras, true);
 cargaVerduras();
 
+function closeModal() {
+    modal.style.display = "none";    
+}
 function enviaPedido() {
     if (sumCantidades>0){
-        alert("El pedido por el monto de "+ sumTotalIva.toFixed(2) +" ha sido enviado.");
+        
+        //alert("El pedido por el monto de "+ sumTotalIva.toFixed(2) +" ha sido enviado.");
         form.removeAttribute('hidden');
         divTable.setAttribute('hidden','');
         divCliente.setAttribute('hidden','');
         lableIdentificacion.innerText="";
         identificacion.value="";
+        modalMsg.innerHTML ="El pedido por el monto de "+ sumTotalIva.toFixed(2) +" ha sido enviado.";
+        modal.style.display = "block";
     
         sumCantidades = 0;
         sumTotalVerduras=0;
@@ -39,7 +55,9 @@ function enviaPedido() {
         patronIdentificacion= /[1-9]\d{8}$/; //fisica nacional
         limpiaVerduras();
     }else{
-        alert("No se puede enviar el pedido!");
+        modalMsg.innerHTML ="No se puede enviar el pedido!";
+        modal.style.display = "block";
+        //alert("No se puede enviar el pedido!");
     }
     return true;
 
@@ -58,18 +76,25 @@ function submit(event) {
         form.setAttribute('hidden', '');
         divTable.removeAttribute('hidden');
         divCliente.removeAttribute('hidden');
-        lableIdentificacion.innerText=identificacion.value;
+        
+        cargaVerduras();
     }else if((tipoIdentificacion.value==="juridica") && (patronIdentificacion.test(identificacion.value)) ){
         form.setAttribute('hidden', '');
         divTable.removeAttribute('hidden');  
         divCliente.removeAttribute('hidden');  
-        lableIdentificacion.innerText=identificacion.value;
+        
+        cargaVerduras();
     }else if((tipoIdentificacion.value==="dimex") && (patronIdentificacion.test(identificacion.value)) ){
         form.setAttribute('hidden', '');
         divTable.removeAttribute('hidden');
         divCliente.removeAttribute('hidden');
-        lableIdentificacion.innerText=identificacion.value;
-    }else{alert("Tipo de identificación y formato de identificación no corresponden.");}
+        
+        cargaVerduras();
+    }else{
+        modalMsg.innerHTML ="Tipo de identificación y formato de identificación no corresponden.";
+        modal.style.display = "block";
+        //alert("Tipo de identificación y formato de identificación no corresponden.");
+    }
     event.preventDefault();
 }
 
@@ -107,27 +132,7 @@ function cambiaPatron() {
     }
 }
 
-document.querySelectorAll('[id^="cantidad_"]').forEach(item => {
-    item.addEventListener('input', event => {
-        event.target.value = event.target.value.length==0 ? 0 : parseInt(event.target.value);
-        event.target.value = isNaN(event.target.value) ? 0 : parseInt(event.target.value);
-        if(parseInt(event.target.value) > parseInt(event.target.max)){
-            event.target.value=event.target.max;
-        }
-        sumaCantidades();
-        let idverdura = item.id.split("_");
-        let idprecio = '[id="precio_'+idverdura[1]+'"]';
-        let idsubtotal = '[id="subtotal_'+idverdura[1]+'"]';
-       
-        let calculaSubtotal = 0;
 
-        calculaSubtotal = parseInt(event.target.value)*parseInt(document.querySelector(idprecio).innerText);
-        document.querySelector(idsubtotal).innerText=calculaSubtotal;
-
-        calDescuentos();
-        sumaTotales();
-    })
-})
 
 function sumaCantidades() {
     sumCantidades=0;
@@ -189,13 +194,13 @@ function calDescuentos() {
             document.querySelector(iddescuento).parentElement.className="cellDer";
             document.querySelector(idiva).parentElement.className="cellDer";
         }
-        
-             
-        
     })
 }
 
 function cargaVerduras() {
+    lableIdentificacion.innerText=identificacion.value;
+    
+    
     let verdurasData = new Array();
     verdurasData.push(["Id","Imagen","Descripción","Precio","Inventario","Fecha Expiracion","Cantidad", "Subtotal","Descuento","+IVA" ]);
     verdurasData.push([1,"images/banano.png","Banano",5,10,"01/07/2020",0]);
@@ -326,4 +331,33 @@ function cargaVerduras() {
 
     divTable.innerHTML = "";
     divTable.appendChild(table);
+
+    document.querySelectorAll('[id^="cantidad_"]').forEach(item => {
+        item.addEventListener('input', event => {
+            event.target.value = event.target.value.length==0 ? 0 : parseInt(event.target.value);
+            event.target.value = isNaN(event.target.value) ? 0 : parseInt(event.target.value);
+            if(parseInt(event.target.value) > parseInt(event.target.max)){
+                event.target.value=event.target.max;
+            }
+            sumaCantidades();
+            let idverdura = item.id.split("_");
+            let idprecio = '[id="precio_'+idverdura[1]+'"]';
+            let idsubtotal = '[id="subtotal_'+idverdura[1]+'"]';
+           
+            let calculaSubtotal = 0;
+    
+            calculaSubtotal = parseInt(event.target.value)*parseInt(document.querySelector(idprecio).innerText);
+            document.querySelector(idsubtotal).innerText=calculaSubtotal;
+    
+            calDescuentos();
+            sumaTotales();
+        })
+    });
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function (event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
 }

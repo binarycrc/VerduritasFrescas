@@ -12,6 +12,8 @@ https://webdesign.tutsplus.com/tutorials/html5-form-validation-with-the-pattern-
 https://www.aspsnippets.com/Articles/Convert-JSON-data-to-HTML-Table-using-JavaScript.aspx
 https://flaviocopes.com/how-to-add-event-listener-multiple-elements-javascript/
 https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onsubmit
+https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_modal
+
 oninvalid="identificacionInvalido(this)"
                     oninput="identificacionInvalido(this)" 
 -->
@@ -33,11 +35,17 @@ oninvalid="identificacionInvalido(this)"
         <header></header>
         <nav></nav>
         <section>
+            <div id="myModal" class="modal">
+                <div class="modal-content">
+                    <span id="spanClose" class="close">&times;</span>
+                    <p id="modalMsg"></p>
+                </div>
+            </div>
             <form id="form">
                 <div class="verduritasInputGroup">
                     <div>
                         <label for="tipoIdentificacion">Tipo de Identificación</label>
-                        <select name="tipoIdentificacion" id="tipoIdentificacion">
+                        <select id="tipoIdentificacion">
                             <option value="fisica" selected>Física</option>
                             <option value="juridica">Jurídica</option>
                             <option value="dimex">DIMEX</option>
@@ -47,7 +55,7 @@ oninvalid="identificacionInvalido(this)"
                         <label for="identificacion">Identificación:</label>
                         <input id="identificacion" type="text" name="identificacion" required>
                         <span class="validity"></span>
-                        <span id="labelPatron">ex. 102340567</span>
+                        <span id="labelPatron">ex. 102340567  debe de contener 9 dígitos, sin cero al inicio y sin guiones </span>
                     </div>
                     <div>
                         <input type="submit" value="Ingresar">
