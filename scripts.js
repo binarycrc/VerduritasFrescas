@@ -68,6 +68,8 @@ function limpiaVerduras() {
     sumaCantidades();
     calDescuentos();
     sumaTotales();
+       
+    divTable.innerText="";
 
 }
 function submit(event) {
