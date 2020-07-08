@@ -1,3 +1,11 @@
+// Cátedra de Ingeniería de Software
+// Código Asignatura: 03075
+// Asignatura: Fundamentos de Programación Web
+// Cuatrimestre: II Cuatrimestre 2020
+// Proyectos y Tarea
+// Resolución de problema    
+// Pablo Ugalde
+
 const form = document.querySelector('#form');
 const identificacion = document.querySelector('#identificacion');
 const tipoIdentificacion = document.querySelector('#tipoIdentificacion');
@@ -11,7 +19,6 @@ const modalMsg = document.querySelector("#modalMsg");
 const porcDescuento = 5/100;
 const porcIva = 13/100;
 
-
 let sumCantidades = 0;
 let sumTotalVerduras=0;
 let sumTotalSubTotal=0;
@@ -19,26 +26,19 @@ let sumTotalDescuento=0;
 let sumTotalIva=0;
 let patronIdentificacion= /[1-9]\d{8}$/; //fisica nacional
 
-// form.onsubmit = submit;
-// tipoIdentificacion.onchange = cambiaPatron;
-// identificacion.oninput = validaIdentificacion;
-// enviarPedido.onclick=enviaPedido;
-
 form.addEventListener("submit", submit, false);
 tipoIdentificacion.addEventListener("change", cambiaPatron, false);
 identificacion.addEventListener("input", validaIdentificacion, false);
 enviarPedido.addEventListener("click", enviaPedido, false);
 spanClose.addEventListener("click", closeModal, false);
-//window.addEventListener("load", cargaVerduras, true);
-cargaVerduras();
+document.addEventListener('DOMContentLoaded', cargaVerduras, false);
 
 function closeModal() {
     modal.style.display = "none";    
 }
+
 function enviaPedido() {
     if (sumCantidades>0){
-        
-        //alert("El pedido por el monto de "+ sumTotalIva.toFixed(2) +" ha sido enviado.");
         form.removeAttribute('hidden');
         divTable.setAttribute('hidden','');
         divCliente.setAttribute('hidden','');
@@ -57,7 +57,6 @@ function enviaPedido() {
     }else{
         modalMsg.innerHTML ="No se puede enviar el pedido!";
         modal.style.display = "block";
-        //alert("No se puede enviar el pedido!");
     }
     return true;
 
@@ -70,32 +69,22 @@ function limpiaVerduras() {
     sumaTotales();
        
     divTable.innerText="";
-
 }
 function submit(event) {
     cambiaPatron();
-    if((tipoIdentificacion.value==="fisica") && (patronIdentificacion.test(identificacion.value)) ){
+    let cumpleCriterios = false;
+    if((tipoIdentificacion.value==="fisica") && (patronIdentificacion.test(identificacion.value)) ){cumpleCriterios = true;}
+    else if((tipoIdentificacion.value==="juridica") && (patronIdentificacion.test(identificacion.value)) ){cumpleCriterios = true;}
+    else if((tipoIdentificacion.value==="dimex") && (patronIdentificacion.test(identificacion.value)) ){cumpleCriterios = true;}
+
+    if (cumpleCriterios === true){
         form.setAttribute('hidden', '');
         divTable.removeAttribute('hidden');
         divCliente.removeAttribute('hidden');
-        
-        cargaVerduras();
-    }else if((tipoIdentificacion.value==="juridica") && (patronIdentificacion.test(identificacion.value)) ){
-        form.setAttribute('hidden', '');
-        divTable.removeAttribute('hidden');  
-        divCliente.removeAttribute('hidden');  
-        
-        cargaVerduras();
-    }else if((tipoIdentificacion.value==="dimex") && (patronIdentificacion.test(identificacion.value)) ){
-        form.setAttribute('hidden', '');
-        divTable.removeAttribute('hidden');
-        divCliente.removeAttribute('hidden');
-        
         cargaVerduras();
     }else{
         modalMsg.innerHTML ="Tipo de identificación y formato de identificación no corresponden.";
         modal.style.display = "block";
-        //alert("Tipo de identificación y formato de identificación no corresponden.");
     }
     event.preventDefault();
 }
@@ -115,11 +104,11 @@ function validaIdentificacion(event) {
 
 
 function cambiaPatron() {
-    //console.log("tipoIdentificacion.value "+ tipoIdentificacion.value)
     switch (tipoIdentificacion.value) {
         case "fisica":
             labelPatron.innerText="ex. 102340567  debe de contener 9 dígitos, sin cero al inicio y sin guiones ";
             patronIdentificacion= /^(?:[1-9]\d{8}|0)$/gm; //fisica nacional
+            
             break;
         case "juridica":
             labelPatron.innerText="ex. 3045607891  debe contener 10 dígitos y sin guiones";
@@ -133,8 +122,6 @@ function cambiaPatron() {
             break;
     }
 }
-
-
 
 function sumaCantidades() {
     sumCantidades=0;
@@ -201,8 +188,7 @@ function calDescuentos() {
 
 function cargaVerduras() {
     lableIdentificacion.innerText=identificacion.value;
-    
-    
+
     let verdurasData = new Array();
     verdurasData.push(["Id","Imagen","Descripción","Precio","Inventario","Fecha Expiracion","Cantidad", "Subtotal","Descuento","+IVA" ]);
     verdurasData.push([1,"images/banano.png","Banano",5,10,"01/07/2020",0]);
@@ -216,14 +202,11 @@ function cargaVerduras() {
     verdurasData.push([9,"images/remolacha.png","Remolacha",45,10,"01/07/2020",0]);
     verdurasData.push([10,"images/cebolla.png","Cebolla",50,10,"01/07/2020",0]);
 
-    //Create a HTML Table element.
     let table = document.createElement("TABLE");
     table.border = "1";
 
-    //Get the count of columns.
     let columnCount = verdurasData[0].length;
 
-    //Add the header row.
     let row = table.insertRow(-1);
     for (let i = 0; i < columnCount; i++) {
         let headerCell = document.createElement("TH");
@@ -231,7 +214,6 @@ function cargaVerduras() {
         row.appendChild(headerCell);
     }
 
-    //Add the data rows.
     for (let i = 1; i < verdurasData.length; i++) {
         row = table.insertRow(-1);
         for (let j = 0; j < columnCount; j++) {
@@ -290,7 +272,7 @@ function cargaVerduras() {
     }
 
     let divTable = document.getElementById("divTable");
-    //Add the footer row.
+
     let footerrow = table.insertRow(-1);
     for (let i = 0; i < columnCount; i++) {
         let headerCell = document.createElement("TH");
@@ -357,7 +339,7 @@ function cargaVerduras() {
     });
 }
 
-// When the user clicks anywhere outside of the modal, close it
+
 window.onclick = function (event) {
     if (event.target == modal) {
         modal.style.display = "none";
