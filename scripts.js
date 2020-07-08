@@ -5,7 +5,17 @@
 // Proyectos y Tarea
 // Resolución de problema    
 // Pablo Ugalde
+/*
+--- tipos de identificacion.xlsx ---
+TipoIdentificacion	Formato	Longitud
+Cédula Identidad	0#-####-####	12
+Cédula Jurídica	3-###-######	9
+DIMEX-Documento Único de Identificación	199999999999	12
+DIDI-Documento de Identificación para Diplomáticos	599999999999	12
+Pasaportes		50
+Cédula (Personas Naturales)	##-aa-####-#####	16
 
+*/
 const form = document.querySelector('#form');
 const identificacion = document.querySelector('#identificacion');
 const tipoIdentificacion = document.querySelector('#tipoIdentificacion');
