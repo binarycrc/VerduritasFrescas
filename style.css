@@ -6,10 +6,35 @@ Proyectos y Tarea
 Resolución de problema    
 Pablo Ugalde */
 
-* {margin: 0px;padding: 0px;}
-header, section, footer, aside, nav, article, figure, figcaption, hgroup{display: block;}
+html,body,div,span,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,abbr,address,cite,code,del,dfn,em,img,ins,kbd,q,samp,small,strong,sub,sup,var,b,i,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,figcaption,figure,footer,header,hgroup,menu,nav,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}
+body{line-height:1; font-family: arial;}
+h1{font-size: 15px;}h2{font-size: 11px;}h3{font-size: 8px;}h4{font-size: 6px;}
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}
+nav ul{list-style:none}
+blockquote,q{quotes:none}
+blockquote:before,blockquote:after,q:before,q:after{content:none}
+a{margin:0;padding:0;font-size:100%;vertical-align:baseline;background:transparent}
+ins{background-color:#ff9;color:#000;text-decoration:none}
+mark{background-color:#ff9;color:#000;font-style:italic;font-weight:bold}
+del{text-decoration:line-through}
+abbr[title],dfn[title]{border-bottom:1px dotted;cursor:help}
+table{border-collapse:collapse;border-spacing:0}
+hr{display:block;height:1px;border:0;border-top:1px solid #ccc;margin:1em 0;padding:0}
+input,select{vertical-align:middle}
 
-div {margin: 10px;position: relative;}
+body,html {background-color: #FFF;}
+header {background: #AEC6CF;padding: 20px 30px;max-width: 940px;margin: auto;}
+nav {display: inline-block;}
+nav ul li a {background: #EEE;padding: 2px 10px;font-size: 10px;text-decoration: none;font-weight: bold;color: #444;border-radius: 10px;}
+nav ul li a:hover {background: #FFF;}
+nav ul li {display: inline-block;margin: 10px;}
+nav ul {list-style: none;}
+
+#mainContent {max-width: 1000px;margin: auto;border: none;}
+footer{bottom: 0;position: fixed;width: 100%;}
+.footer {background: #AEC6CF;height: 50px;margin: auto;max-width: 1000px;text-align:center;padding:10px;color:#ffffff;}
+
+div {margin: 6px;position: relative;}
 
 input + span {padding-right: 30px;}
 input:invalid {color: red;}
@@ -18,6 +43,12 @@ input:invalid+span:after {position: absolute; content: '✖';padding-left: 5px;c
 input:valid+span:after {position: absolute;content: '✓';padding-left: 5px;color: green;}
 input,input:valid {color: #000000;}
 
+#verdurasTable{max-width: 95%;width: 95%;}
+#verdurasTable.td{vertical-align: middle;}  
+#verdurasTable tbody{border:1px solid black;}
+#verdurasTable tr{border:1px solid black;}
+#verdurasTable th{border:1px solid black;}
+#verdurasTable td{border:1px solid black; display: table-cell;vertical-align: middle;padding-left: 5px;padding-right: 5px;}
 #cantidad {width: 3em;}
 .imgverdura{max-width: 50px;}
 .cellIzq{text-align: left;}

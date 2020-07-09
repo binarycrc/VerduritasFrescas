@@ -16,31 +16,40 @@ https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onsubmit
 https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_modal
  data-mask="(999)-999-9999" placeholder="(999)-999-9999"
 -->
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html> <!-- HTML 5 no tendrán una referencia a la DTD en el doctype.-->
+<html lang="en"> <!--El atributo HTML lang se usa para identificar el idioma del contenido de texto en la web.-->
 
-<head>
-    <meta charset="UTF-8">
-    <title>Verduritas Frescas</title>
+<head><!--Informacion acerca del documento-->
+    <meta charset="UTF-8"><!--codificación de caracteres UTF-8, que es un método para convertir tus caracteres escritos en código legible-->
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verduritas Frescas</title><!--titulo del documento-->
     <meta name="description"
-        content="Fundamentos de Programación Web - Resolución de problema -  Verduritas Frescas S.A. ">
-    <meta name="keywords" content="HTML5, CSS3, JavaScript">
-    <meta name="author" content="Pablo Ugalde">
-    <link rel="stylesheet" href="style.css">
+        content="Fundamentos de Programación Web - Resolución de problema -  Verduritas Frescas S.A. "><!--descripcion del documento-->
+    <meta name="keywords" content="HTML5, CSS3, JavaScript"><!--Una serie de palabras clave que considere relevantes para la página en cuestión-->
+    <meta name="author" content="Pablo Ugalde"><!--Referencia del autor del documento-->
+    <link rel="stylesheet" href="style.css"><!--se usa con mayor frecuencia para vincular a hojas de estilo externas.-->
 </head>
 
-<body>
-    <div>
-        <header></header>
-        <nav></nav>
-        <section>
-            <div id="myModal" class="modal">
+<body> <!--contiene todo el contenido de un documento HTML-->
+    <div><!--div principal para el documento-->
+        <header><!--encabezado de la pagina o seccion principal-->
+            <div id="logo">Verduritas Frescas S.A.</div>
+            <nav><!--links para la navegacion en el header-->
+                <ul>
+                    <li><a href="#">Home</a>
+                </ul>
+            </nav>
+        </header>
+    
+        <section id="mainContent"><!--seccion principal del documento-->
+            <div id="myModal" class="modal"><!--mensaje tipo modal para evitar errores en los browsers-->
                 <div class="modal-content">
                     <span id="spanClose" class="close">&times;</span>
                     <p id="modalMsg"></p>
                 </div>
             </div>
-            <form id="form">
+            <form id="form"><!--formulario principal  -->
                 <div class="verduritasInputGroup">
                     <div>
                         <label for="tipoIdentificacion">Tipo de Identificación</label>
@@ -72,11 +81,16 @@ https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_modal
 
             </div>
         </section>
-        <footer>
-            Derechos Reservados &copy; 2020
-        </footer>
+        
     </div>
+    <footer>
+        <div class="footer">Derechos Reservados &copy; 2020</div>        
+    </footer>
 </body>
-<script src="scripts.js"></script>
+<!--Como estamos utilizando la declaracion de eventos para los elementos
+    en el archivo javascript, para evitar errores, el llamado al archivo 
+    javascript se hace al final del documento cuando todos los elementos
+    ya existen-->
+<script src="scripts.js"></script><!--El atributo src especifica la URL de un archivo de script externo-->
 
 </html>

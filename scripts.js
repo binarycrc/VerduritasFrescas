@@ -213,6 +213,8 @@ function cargaVerduras() {
     verdurasData.push([10,"images/cebolla.png","Cebolla",50,10,"01/07/2020",0]);
 
     let table = document.createElement("TABLE");
+    table.id="verdurasTable";
+    table.className="verdurasTable";
     table.border = "1";
 
     let columnCount = verdurasData[0].length;
