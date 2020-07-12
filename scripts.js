@@ -239,7 +239,7 @@ function cargaVerduras() {
 
     // arreglo de datos para generar la tabla principal
     let verdurasData = new Array();
-    verdurasData.push(["Id","Imagen","Descripción","Precio","Inventario","Fecha Expiracion","Cantidad", "Subtotal","Descuento","+IVA" ]);
+    verdurasData.push(["Id","Imagen","Descripción","Precio","Inventario","Fec Exp","Cantidad", "Subtotal","Descuento","+IVA" ]);
     verdurasData.push([1,"images/banano.png","Banano",5,10,"01/07/2020",0]);
     verdurasData.push([2,"images/chayote.png","Chayote",10,10,"01/07/2020",0]);
     verdurasData.push([3,"images/pina.png","Piña",15,10,"01/07/2020",0]);
