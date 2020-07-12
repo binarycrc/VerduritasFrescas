@@ -142,7 +142,7 @@ function cambiaPatron() {
             patronIdentificacion= /(^0(?:[1-9]{1}-))((?:[1-9]{4}-))((?:[1-9]{4}$))/gm; //fisica nacional
             break;
         case "juridica":
-            labelPatron.innerText="ex. 3-456-7891  debe contener 12 dígitos, iniciar en 3 y 2 guiones";
+            labelPatron.innerText="ex. 3-456-789121 debe contener 12 dígitos, iniciar en 3 y 2 guiones";
             patronIdentificacion= /(^3-)((?:[1-9]{3}-))((?:[1-9]{6}$))/gm; //juridica nacional
             break;
         case "dimex":
